@@ -1,0 +1,46 @@
+import openpyxl
+import re
+
+# Function to parse header file and extract function prototypes
+def parse_header_file(header_file):
+    function_prototypes = []
+
+    with open(header_file, 'r') as file:
+        lines = file.readlines()
+
+    for line in lines:
+        # Use a regular expression to identify function prototypes
+        match = re.match(r'^\s*([\w\s\*]+)\s+([\w_]+)\s*\([^)]*\)\s*;', line)
+        if match:
+            return_type, function_name = match.groups()
+            function_prototypes.append(f"{return_type} {function_name}();")
+
+    return function_prototypes
+
+# Function to create and save an Excel sheet
+def create_excel_sheet(function_prototypes, excel_file):
+    workbook = openpyxl.Workbook()
+    sheet = workbook.active
+    sheet.title = "Function Prototypes"
+
+    # Add headers
+    sheet['A1'] = "Function Prototypes"
+    sheet['B1'] = "ID"
+
+    # Populate Excel sheet with data
+    for idx, prototype in enumerate(function_prototypes, start=1):
+        unique_id = f"IDX{idx:03}"  # Format the unique ID as IDX001, IDX002, etc.
+        sheet.cell(row=idx + 1, column=1, value=prototype)
+        sheet.cell(row=idx + 1, column=2, value=unique_id)
+
+    # Save the Excel sheet
+    workbook.save(excel_file)
+
+if __name__ == "__main__":
+    header_file = "/home/rafik/Desktop/EmbeddedLinux/01_Python/04_Advanced/Task4_HeaderFiles/header.h"  # Replace with the path to your header file
+    excel_file = "function_prototypes.xlsx"  # Replace with the desired Excel file name
+
+    function_prototypes = parse_header_file(header_file)
+    create_excel_sheet(function_prototypes, excel_file)
+
+    print(f"Function prototypes from '{header_file}' have been saved to '{excel_file}'")

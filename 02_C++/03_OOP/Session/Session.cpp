@@ -15,5 +15,6 @@ int main(){
     Data d3;
     Data d4;
     std::cout<<Data::count<<std::endl;
+    //std::cout<<&(Data::count)<<std::endl;
     return 0;
 }

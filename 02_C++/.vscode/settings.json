@@ -45,7 +45,9 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "typeinfo": "cpp",
-        "cstring": "cpp"
+        "cstring": "cpp",
+        "csignal": "cpp",
+        "fstream": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabledIfIncludesResolve",
     "C_Cpp.default.configurationProvider": "ms-vscode.cpptools"

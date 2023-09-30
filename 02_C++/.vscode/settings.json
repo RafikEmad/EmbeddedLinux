@@ -73,7 +73,7 @@
         "typeindex": "cpp",
         "variant": "cpp"
     },
-    "C_Cpp.errorSquiggles": "enabledIfIncludesResolve",
+    "C_Cpp.errorSquiggles": "disabled",
     "C_Cpp.default.configurationProvider": "ms-vscode.cpptools",
     "cmake.sourceDirectory": "/home/rafik/Desktop/EmbeddedLinux/02_C++/PC_Control/websocketpp",
     "cmake.configureOnOpen": false

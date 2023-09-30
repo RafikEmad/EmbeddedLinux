@@ -22,11 +22,20 @@ public:
             std::cout << "3. Add all changes" << std::endl;
             std::cout << "4. Commit" << std::endl;
             std::cout << "5. Remove" << std::endl;
-            std::cout << "6. Exit" << std::endl;
+            std::cout << "6. Push" << std::endl;
+            std::cout << "7. Exit" << std::endl;
             std::string gitStatusCommand;
             std::string gitAddCommand;
             std::string gitAddAllCommand;
+            std::string gitRemoveCommand;
+            std::string gitResetCommand;
+            std::string gitCommitCommand;
+            std::string gitPushCommand;
             int addResult;
+            int removeResult;
+            int resetResult;
+            int commitResult;
+            int pushResult;
             int choice;
             std::cin >> choice;
 
@@ -60,14 +69,47 @@ public:
                     }
                     break;    
                 case 4:
-                    std::cout << "Performing 'git commit -m \"Committing " << filename_ << "\"'" << std::endl;
-                    // Implement 'git commit' logic here
-                    break;
+                    std::cout << "Enter a commit message: ";
+                    std::cin.ignore(); // Ignore newline character from previous input
+                    std::getline(std::cin, commitMessage_);
+                    std::cout << "Performing 'git commit -m \"" << commitMessage_ << "\"'" << std::endl;
+                    gitCommitCommand = "cd " + gitDirectoryPath_ + " && git commit -m \"" + commitMessage_ + "\"";
+                    commitResult = std::system(gitCommitCommand.c_str()); // Execute 'git commit' command
+                    if (commitResult == 0) {
+                        std::cout << "Committed changes with message: " << commitMessage_ << std::endl;
+                    } else {
+                        std::cerr << "Failed to commit changes." << std::endl;
+                    }break;
                 case 5:
-                    std::cout << "Performing 'git rm " << filename_ << "'" << std::endl;
-                    // Implement 'git rm' logic here
+                    std::cout << "Enter the filename to remove: ";
+                    std::cin.ignore(); // Ignore newline character from previous input
+                    std::getline(std::cin, filename_);
+                    std::cout << "Performing 'git reset " << filename_ << "'" << std::endl;
+                    gitResetCommand = "cd " + gitDirectoryPath_ + " && git reset " + filename_;
+                    resetResult = std::system(gitResetCommand.c_str()); // Execute 'git reset' command
+                    if (resetResult == 0) {
+                        std::cout << "Unstaged changes for file '" << filename_ << "'." << std::endl;
+                    } else {
+                        std::cerr << "Failed to unstage changes for file '" << filename_ << "'." << std::endl;
+                    }
                     break;
                 case 6:
+                    std::cout << "Enter your Git username: ";
+                    std::cin >> gitUsername_;
+                    std::cout << "Enter your Git token: ";
+                    std::cin >> gitToken_;
+                    std::cout << "Performing 'git push'" << std::endl;
+                    // Include the username and token in the git push command
+                    //gitPushCommand = "cd " + gitDirectoryPath_ + " && git push --username " + gitUsername_ + " --token " + gitToken_;
+                    gitPushCommand = "git push https://" + gitToken_ + "@github.com/" + gitUsername_ + "/" + "EmbeddedLinux" + ".git";
+                    pushResult = std::system(gitPushCommand.c_str()); // Execute 'git push' command
+                    if (pushResult == 0) {
+                        std::cout << "Pushed changes to the remote repository." << std::endl;
+                    } else {
+                        std::cerr << "Failed to push changes." << std::endl;
+                    }
+                break;
+                case 7:
                     std::cout << "Exiting the program." << std::endl;
                     return; // Exit the program
                 default:
@@ -78,6 +120,9 @@ public:
 private:
     std::string filename_;
     std::string gitDirectoryPath_;
+    std::string commitMessage_;
+    std::string gitUsername_;
+    std::string gitToken_;
 
     bool isInGitRepository(const std::string& path) {
         // Use '[ -d .git ]' command to check for the existence of .git directory
@@ -102,3 +147,16 @@ int main(int argc, char* argv[]) {
 
     return 0;
 }
+//       g++ -o GitMan GitMan.cpp
+//      ./GitMan file.txt /home/rafik/Desktop/EmbeddedLinux
+// 1. Git Status
+// 2. Add file
+// 3. Add all changes
+// 4. Commit
+// 5. Remove
+// 6. Push
+// 7. Exit
+// 2
+// Enter the filename to add: /home/rafik/Desktop/EmbeddedLinux/02_C++/04_OOP_2/Task3_GitManager/filetoberemoved.txt
+// Performing 'git add /home/rafik/Desktop/EmbeddedLinux/02_C++/04_OOP_2/Task3_GitManager/filetoberemoved.txt'
+// File '/home/rafik/Desktop/EmbeddedLinux/02_C++/04_OOP_2/Task3_GitManager/filetoberemoved.txt' added to the Git staging area.

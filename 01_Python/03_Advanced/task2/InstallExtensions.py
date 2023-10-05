@@ -13,6 +13,14 @@ def PressIcon(icon):
         image_center_y = image_y + image_height / 2
         pyautogui.click(image_center_x, image_center_y)
 
+def install_extension(extension_name):
+    pyautogui.write(extension_name)
+    time.sleep(3)
+    PressIcon(extension_name)
+    time.sleep(2)
+    PressIcon("install")
+
+
 pyautogui.hotkey('win')
 time.sleep(1)
 pyautogui.write('termina')
@@ -25,33 +33,14 @@ time.sleep(1)
 PressIcon("Extensions")
 time.sleep(3)
 
-pyautogui.write('clangd')
-time.sleep(3)
-PressIcon("clangd")
-time.sleep(2)
-PressIcon("install")
+extensions_to_install = [
+    "clangd",
+    "c++ testmate",
+    "c++ helper",
+    "cmake",
+    "cmake tools"
+]
 
-pyautogui.write('c++ testmate')
-time.sleep(3)
-PressIcon("c++ testmate")
-time.sleep(2)
-PressIcon("install")
-
-
-pyautogui.write('c++ helper')
-time.sleep(4)
-PressIcon("c++ helper")
-time.sleep(2)
-PressIcon("install")
-
-pyautogui.write('cmake')
-time.sleep(4)
-PressIcon("cmake")
-time.sleep(2)
-PressIcon("install")
-
-pyautogui.write('cmake tools')
-time.sleep(4)
-PressIcon("cmake tools")
-time.sleep(2)
-PressIcon("install")
+for extension in extensions_to_install:
+    install_extension(extension)
+    time.sleep(4)

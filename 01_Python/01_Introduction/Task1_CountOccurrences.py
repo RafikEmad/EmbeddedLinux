@@ -13,6 +13,6 @@ numbers = [int(number) for number in numbers]
 #target to count No of occurrences
 target = int(input("Enter the number you want to count: "))
 
-result = count_occurrences(numbers, target)
+result = numbers.count(target)
 
 print(f"The number {target} appears {result} times in the list.")

@@ -3,7 +3,7 @@
 int main() {
     Server server;
     
-    if (server.CreateSocket(8080) && server.Bind() && server.ListenForConnections()) {
+    if (server.CreateSocket(8083) && server.Bind() && server.ListenForConnections()) {
         server.StartConnection();
     }
     

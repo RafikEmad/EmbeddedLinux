@@ -1,6 +1,11 @@
 #include "commands.hpp"
 
-Commands::Commands(int clientSocket) : clientSocket(clientSocket) {}
+Commands::Commands(int clientSocket) : clientSocket(clientSocket) {
+    commandMap["terminal"] = [this] { OpenTerminal(); };
+    commandMap["home"] = [this] { OpenHomeDirectory(); };
+    commandMap["chrome"] = [this] { OpenChrome(); };
+    commandMap["battery"] = [this] { GetBatteryPercentage(); };
+}
   
 Commands::~Commands() {
     // Clean up any resources if necessary.

@@ -8,9 +8,13 @@
 #include <cstdlib>
 #include <fstream>
 #include <streambuf>
+#include <functional>
+#include <map>
 
 class Commands {
 public:
+    // Define function type alias for actions associated with commands
+    using CommandFunction = std::function<void()>;
     Commands(int clientSocket);
     ~Commands();
 
@@ -24,6 +28,7 @@ private:
     void GetBatteryPercentage();
     void ExecuteAndSendOutput(const char* command);
     int clientSocket;
+    std::map<std::string, CommandFunction> commandMap;
 };
 
 #endif

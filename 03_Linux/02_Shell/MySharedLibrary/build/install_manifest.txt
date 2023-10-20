@@ -1,0 +1,4 @@
+/usr/local/lib/libmysharedlib.so.1.0
+/usr/local/lib/libmysharedlib.so.1
+/usr/local/lib/libmysharedlib.so
+/usr/local/include/calc.hpp

@@ -1,0 +1,7 @@
+/home/rafik/Desktop/EmbeddedLinux/03_Linux/02_Shell/Project/build/CMakeFiles/myapp.dir
+/home/rafik/Desktop/EmbeddedLinux/03_Linux/02_Shell/Project/build/CMakeFiles/edit_cache.dir
+/home/rafik/Desktop/EmbeddedLinux/03_Linux/02_Shell/Project/build/CMakeFiles/rebuild_cache.dir
+/home/rafik/Desktop/EmbeddedLinux/03_Linux/02_Shell/Project/build/CMakeFiles/list_install_components.dir
+/home/rafik/Desktop/EmbeddedLinux/03_Linux/02_Shell/Project/build/CMakeFiles/install.dir
+/home/rafik/Desktop/EmbeddedLinux/03_Linux/02_Shell/Project/build/CMakeFiles/install/local.dir
+/home/rafik/Desktop/EmbeddedLinux/03_Linux/02_Shell/Project/build/CMakeFiles/install/strip.dir

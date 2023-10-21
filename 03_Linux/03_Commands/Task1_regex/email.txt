@@ -1,0 +1,14 @@
+Pass:
+john.doe@example.com
+jane_doe123@sub.example.org
+user@my-website.info
+info+special@example.co
+
+Fail:
+Not an email address
+@invalid-email.com
+user@.incomplete-domain
+user@invalid-domain.
+user@toolongtld.abcde
+user@inva#lid.email
+user@with spaces.com

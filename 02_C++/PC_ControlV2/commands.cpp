@@ -12,17 +12,11 @@ Commands::~Commands() {
 }
 
 void Commands::ExecuteCommand(const std::string& command) {
-    if (command == "terminal") {
-        OpenTerminal();
-    } 
-    else if (command == "home"){
-        OpenHomeDirectory();
-    }    
-    else if (command == "chrome"){
-        OpenChrome();
-    } 
-    else if (command == "battery"){
-        GetBatteryPercentage();
+    // Check if the command exists in the map
+    auto commandFunction = commandMap.find(command);
+    if (commandFunction != commandMap.end()) {
+        // Execute the associated function
+        commandFunction->second();
     }
     else {
         // Handle other commands or provide an error message.

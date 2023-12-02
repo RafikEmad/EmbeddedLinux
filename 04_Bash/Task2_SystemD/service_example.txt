@@ -1,0 +1,11 @@
+[Unit]
+Description=Battery Notification Service
+
+[Service]
+Environment="DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus"
+ExecStart=/usr/bin/python3 /home/rafik/Desktop/EmbeddedLinux/04_Bash/Task2_SystemD/batterynotification.py
+ExecStartPre=/bin/sleep 30
+User=rafik
+
+[Install]
+WantedBy=default.target

@@ -12,6 +12,7 @@ public:
 
 private:
     std::string ledPath;
+    void setTriggerPermissions();
 };
 
 #endif // LEDCONTROLLER_HPP

@@ -2,8 +2,24 @@
 #include <iostream>
 #include <fstream>
 #include <unistd.h>
+#include <cstdlib>
 
-LedController::LedController(const std::string& ledPath) : ledPath(ledPath) {}
+LedController::LedController(const std::string& ledPath) : ledPath(ledPath) {
+    setTriggerPermissions();
+}
+
+void LedController::setTriggerPermissions() {
+    std::string triggerFile = ledPath + "/trigger";
+    std::string command = "sudo chmod 777 " + triggerFile;
+
+    // Execute the command using the system() function
+    int result = system(command.c_str());
+
+    // Check the result of the system command
+    if (result != 0) {
+        std::cerr << "Error setting permissions for trigger file: " << triggerFile << std::endl;
+    }
+}
 
 void LedController::setTrigger(const std::string& trigger) {
     std::string triggerFile = ledPath + "/trigger";

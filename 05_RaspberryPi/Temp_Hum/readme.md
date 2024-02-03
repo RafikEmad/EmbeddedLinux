@@ -52,9 +52,9 @@ you will get the configuration name that needs to be active
 
 - Adjust the dtb file to include the hardware needed
 
-![led-test](../05_RaspberryPi/screenshots/led.png)
+![led-test](../Temp_Hum/screenshots/led.png)
 
-![dht11](../05_RaspberryPi/screenshots/dht.png)
+![dht11](../Temp_Hum/screenshots/dht.png)
 
 - Get the information of linux kernel version and architecture to cross complie the cpp codes
 on Raspberry Pi
@@ -85,6 +85,6 @@ scp temp_hum.sh raspberry:
 ```
 
 - Screenshots after running
-![csv](../05_RaspberryPi/screenshots/receivedcsv.png)
-![bash_execute](../05_RaspberryPi/screenshots/temp_hum.png)
-![gui](../05_RaspberryPi/screenshots/gui.png)
+![csv](../Temp_Hum/screenshots/receivedcsv.png)
+![bash_execute](../Temp_Hum/screenshots/temp_hum.png)
+![gui](../Temp_Hum/screenshots/gui.png)
